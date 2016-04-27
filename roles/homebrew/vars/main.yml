@@ -1,0 +1,37 @@
+---
+    # Tap external Homebrew repositories.
+    #
+    # e.g.
+    # - homebrew/binary
+    homebrew_repositories:
+
+    # Managed Homebrew packages.
+    #
+    # e.g.
+    # - package_name
+    # or
+    # { name: package_name, state: package_state, install_options: [with-baz, enable-debug] }
+    #
+    # state choices: [head, latest, present, absent, linked, unlinked] (default: latest)
+    # install_options: string or sequence (default: none)
+    homebrew_packages:
+      - readline
+      - openssl
+      - { name: openssl, state: linked, install_options: force }
+      - git
+      - peco
+      - rbenv
+      - ruby-build
+      - the_silver_searcher
+      - vim
+      - zsh
+      - zsh-completions
+      - zsh-syntax-highlighting
+      - fish
+      - curl
+      - wget
+      - jq
+      - nodebrew
+      - tig
+      - mackup
+      - argon/mas/mas

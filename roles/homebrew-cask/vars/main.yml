@@ -1,0 +1,48 @@
+---
+    # Tap external Homebrew Cask repositories.
+    homebrew_cask_repositories:
+      - caskroom/versions
+
+    # Managed Homebrew Cask packages.
+    #
+    # e.g.
+    # - package_name
+    # or
+    # { name: package_name, state: package_state }
+    #
+    # state choices: [present, absent, installed, uninstalled] (default: present)
+    homebrew_cask_packages:
+      - firefox
+      - google-chrome
+      - google-japanese-ime
+      - iterm2
+      - java6
+      - slack
+      - sublime-text
+      - vagrant
+      - virtualbox
+      - alfred
+      - atom
+      - flux
+      - p4merge
+      - appcleaner
+      - clipmenu
+      - the-unarchiver
+      - dropbox
+      - evernote
+      - sourcetree
+      - cyberduck
+      - keepassx
+      - vlc
+      - mysqlworkbench
+      - google-photos-backup
+      - coteditor
+      - visual-studio-code
+      - github-desktop
+      - sequel-pro
+      - dash
+      - magican
+      - unetbootin
+      - franz
+      - caffeine
+      - chromium

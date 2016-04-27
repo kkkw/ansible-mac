@@ -1,0 +1,11 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  become: no
+  roles:
+    - homebrew
+    - homebrew-cask
+    - mas
+    - directories
+  vars:
+    local_dotfiles_ripository: ''
