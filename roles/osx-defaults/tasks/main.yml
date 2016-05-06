@@ -1,0 +1,102 @@
+---
+- name: dock autohide set enable
+  osx_defaults:
+    domain: com.apple.dock
+    key: "{{ item }}"
+    type: bool
+    value: true
+  with_items:
+    - autohide
+    - magnification
+
+- name: finder set enable
+  osx_defaults:
+    domain: com.apple.finder
+    key: "{{ item }}"
+    type: bool
+    value: true
+  with_items:
+    - ShowStatusBar
+    - ShowPathbar
+    - ShowTabView
+    - AppleShowAllFiles
+    - _FXShowPosixPathInTitle
+    - QLEnableTextSelection
+    - DisableAllAnimations
+
+- name: finder set disable
+  osx_defaults:
+    domain: com.apple.finder
+    key: "{{ item }}"
+    type: bool
+    value: false
+  with_items:
+    - NSAutomaticWindowAnimationsEnabled
+
+# - name: finder set default view as column
+#   osx_defaults:
+#     domain: com.apple.finder
+#     key: FXPreferredViewStyle
+#     type: string
+#     value: Nlsv
+
+- name: show all extentions 
+  osx_defaults:
+    key: AppleShowAllExtensions
+    type: bool
+    value: true
+
+- name: set full keyboard access
+  osx_defaults:
+    key: AppleKeyboardUIMode
+    type: int
+    value: 3
+
+- name: set fn key as function
+  osx_defaults:
+    key: com.apple.keyboard.fnState
+    type: bool
+    value: true
+
+
+# - name: set datetime format in menue
+#   osx_defaults:
+#     domain: com.apple.menuextra.clock
+#     key: DateFormat
+#     type: string
+#     value: M\u6708d\u65e5(EEE)  H:mm
+
+- name: finder
+  osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTarget
+    type: string
+    value: PfLo
+
+# - name: finder
+#   osx_defaults:
+#     domain: com.apple.finder
+#     key: NewWindowTargetPath
+#     type: string
+#     value: PfDe
+
+# - name: enable tap to click. trackpad
+#   osx_defaults:
+#     domain: com.apple.driver.AppleMultitouchTrackpad.trackpad
+#     key: Clicking
+#     type: int
+#     value: 1
+
+# - name: enable right click. mouse
+#   osx_defaults:
+#     domain: com.apple.driver.AppleBluetoothMultitouch.mouse
+#     key: MouseButtonMode
+#     value: TwoButton
+
+# - name: enable right click. mouse
+#   osx_defaults:
+#     domain: com.apple.AppleMultitouchMouse
+#     key: MouseButtonMode
+#     value: TwoButton
+
+

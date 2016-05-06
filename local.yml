@@ -3,9 +3,10 @@
   gather_facts: no
   become: no
   roles:
-    - homebrew
-    - homebrew-cask
-    - mas
-    - directories
+    # - homebrew
+    # - homebrew-cask
+    # - mas
+    # - directories
+    - osx-defaults
   vars:
     local_dotfiles_ripository: ''
