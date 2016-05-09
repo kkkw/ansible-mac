@@ -32,13 +32,14 @@
     value: false
   with_items:
     - NSAutomaticWindowAnimationsEnabled
+    - FXEnableExtensionChangeWarning
 
-# - name: finder set default view as column
-#   osx_defaults:
-#     domain: com.apple.finder
-#     key: FXPreferredViewStyle
-#     type: string
-#     value: Nlsv
+- name: finder set default view as column
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXPreferredViewStyle
+    type: string
+    value: Nlsv
 
 - name: show all extentions 
   osx_defaults:
@@ -58,27 +59,49 @@
     type: bool
     value: true
 
+- name: panel expand when save
+  osx_defaults:
+    key: NSNavPanelExpandedStateForSaveMode
+    type: bool
+    value: true
 
-# - name: set datetime format in menue
-#   osx_defaults:
-#     domain: com.apple.menuextra.clock
-#     key: DateFormat
-#     type: string
-#     value: M\u6708d\u65e5(EEE)  H:mm
+- name: panel expand when saves2
+  osx_defaults:
+    key: NSNavPanelExpandedStateForSaveMode2
+    type: bool
+    value: true
 
-- name: finder
+- name: set datetime format in menue
+  osx_defaults:
+    domain: com.apple.menuextra.clock
+    key: DateFormat
+    value: M\u6708d\u65e5(EEE)  H:mm
+
+- name: finder new window target
   osx_defaults:
     domain: com.apple.finder
     key: NewWindowTarget
-    type: string
-    value: PfLo
+    value: PfHm
 
-# - name: finder
-#   osx_defaults:
-#     domain: com.apple.finder
-#     key: NewWindowTargetPath
-#     type: string
-#     value: PfDe
+- name: finder new window target path
+  osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTargetPath
+    value: file://${HOME}/
+
+- name: require password after screensaver
+  osx_defaults:
+    domain: com.apple.screensaver
+    key: askForPassword
+    type: int
+    value: 1
+
+- name: require password immediately after screensaver
+  osx_defaults:
+    domain: com.apple.screensaver
+    key: askForPasswordDelay
+    type: float
+    value: 0
 
 # - name: enable tap to click. trackpad
 #   osx_defaults:
@@ -87,16 +110,53 @@
 #     type: int
 #     value: 1
 
-# - name: enable right click. mouse
-#   osx_defaults:
-#     domain: com.apple.driver.AppleBluetoothMultitouch.mouse
-#     key: MouseButtonMode
-#     value: TwoButton
+- name: enable right click. mouse
+  osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.mouse
+    key: MouseButtonMode
+    value: TwoButton
 
-# - name: enable right click. mouse
-#   osx_defaults:
-#     domain: com.apple.AppleMultitouchMouse
-#     key: MouseButtonMode
-#     value: TwoButton
+- name: enable right click. mouse
+  osx_defaults:
+    domain: com.apple.AppleMultitouchMouse
+    key: MouseButtonMode
+    value: TwoButton
 
+- name: dont write dsstore on network drive
+  osx_defaults:
+    domain: com.apple.desktopservices
+    key: DSDontWriteNetworkStores
+    type: bool
+    value: true
+
+- name: disable crashreporter
+  osx_defaults:
+    domain: com.apple.CrashReporter
+    key: DialogType
+    value: none
+
+- name: change screencapture location
+  osx_defaults:
+    domain: com.apple.screencapture
+    key: location
+    value: ${HOME}/Downloads
+
+# - name: InitialKeyRepeat
+#   osx_defaults:
+#     key: InitialKeyRepeat
+#     value: 13
+#     type: int
+    
+# - name: KeyRepeat
+#   osx_defaults:
+#     key: KeyRepeat
+#     value: 13
+#     type: int
+
+# - name: disable ImageCapture hotplug
+#   osx_defaults:
+#     domain: com.apple.ImageCapture
+#     key: disableHotPlug
+#     type: bool
+#     value: true
 
