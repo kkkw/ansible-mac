@@ -112,15 +112,12 @@
 
 - name: enable right click. mouse
   osx_defaults:
-    domain: com.apple.driver.AppleBluetoothMultitouch.mouse
+    domain: "{{ item }}"
     key: MouseButtonMode
     value: TwoButton
-
-- name: enable right click. mouse
-  osx_defaults:
-    domain: com.apple.AppleMultitouchMouse
-    key: MouseButtonMode
-    value: TwoButton
+  with_items:
+    - com.apple.driver.AppleBluetoothMultitouch.mouse
+    - com.apple.AppleMultitouchMouse
 
 - name: dont write dsstore on network drive
   osx_defaults:
