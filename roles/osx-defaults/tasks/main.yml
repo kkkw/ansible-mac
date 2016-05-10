@@ -141,6 +141,12 @@
     key: location
     value: ${HOME}/Downloads
 
+- name: disable natural scroll
+  osx_defaults:
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false
+
 # - name: InitialKeyRepeat
 #   osx_defaults:
 #     key: InitialKeyRepeat
