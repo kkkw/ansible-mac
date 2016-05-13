@@ -36,3 +36,4 @@
       - mackup
       - argon/mas/mas
       - hub
+      - httpie
