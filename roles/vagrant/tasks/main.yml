@@ -1,0 +1,38 @@
+---
+- name: is installed vagrant
+  shell: brew cask list
+  register: vagrant_cask_list
+  changed_when: False
+  always_run: True
+
+- block:
+
+  - name: 'create boxes directory'
+    file:
+      path: "{{ vagrant_directory }}/{{ item }}"
+      state: directory
+      recurse: True
+    with_items:
+      - boxes
+      - machines
+      
+  - name: vagrant init
+    shell: vagrant init
+    args:
+      creates: "{{ vagrant_directory }}/machines/Vagrantfile"
+      chdir:  "{{ vagrant_directory }}/machines" 
+    
+  - name: get installed list
+    shell: vagrant plugin list
+    args:
+      chdir:  "{{ vagrant_directory }}/machines" 
+    register: vagrant_plugin_list
+    changed_when: False
+    always_run: True
+
+  - name: install vagrant plugins
+    shell: "vagrant plugin install {{ item }}"
+    when: '"{{ vagrant_plugins }}" is defined and "{{ item }}" not in vagrant_plugin_list.stdout'
+    with_items: "{{ vagrant_plugins }}"
+        
+  when: '"vagrant" in vagrant_cask_list.stdout_lines'

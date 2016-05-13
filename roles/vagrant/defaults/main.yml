@@ -1,0 +1,8 @@
+---
+  vagrant_directory:  ~/vagrant
+  vagrant_plugins:
+    - sahara
+    - vagrant-global-status
+    - vagrant-vbguest
+    - landrush
+  

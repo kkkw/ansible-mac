@@ -8,5 +8,6 @@
     - mas
     - directories
     - sublime-text
+    - vagrant
   vars:
     local_dotfiles_ripository: ''
