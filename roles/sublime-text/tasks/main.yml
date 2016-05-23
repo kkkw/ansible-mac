@@ -25,19 +25,19 @@
 
       - name: sublime text setting local
         stat: 
-          path: ~/Library/Application Support/Sublime Text 3/User
+          path: ~/Library/Application Support/Sublime Text 3/Packages/User
         register: sublime_exists_text_setting_user
 
       - name: delete sublime text setting local
         file: 
-          path: ~/Library/Application Support/Sublime Text 3/User
+          path: ~/Library/Application Support/Sublime Text 3/Packages/User
           state: absent
         when: sublime_exists_text_setting_user.stat.isdir is defined and sublime_exists_text_setting_user.stat.isdir == true 
 
       - name: link sublime text settimg local
         file: 
           src: "{{ sublime_text_my_setting_directory }}/User"
-          dest: ~/Library/Application Support/Sublime Text 3/User
+          dest: ~/Library/Application Support/Sublime Text 3/Packages/User
           state: link
 
     when: sublime_text_exists_my_setting_directory.stat.isdir is defined and sublime_text_exists_my_setting_directory.stat.isdir == true
