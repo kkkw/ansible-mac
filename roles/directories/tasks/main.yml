@@ -3,11 +3,3 @@
   file:
     path: ~/workspace
     state: directory
-
-- name: 'Local | create directory vagrant'
-  file:
-    path: ~/vagrant/boxes
-    state: directory
-    recurse: yes
-
-
