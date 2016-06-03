@@ -14,7 +14,7 @@
       recurse: True
     with_items:
       - boxes
-      - machines
+      - machines/shared
       
   - name: vagrant init
     shell: vagrant init
