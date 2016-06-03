@@ -3,11 +3,11 @@
   gather_facts: no
   become: no
   roles:
-    - homebrew
-    - homebrew-cask
-    - mas
-    - directories
-    - sublime-text
-    - vagrant
+    - { role: homebrew, tags: [homebrew]}
+    - { role: homebrew-cask, tags: [homebrew-cask]}
+    - { role: mas, tags: [mas]}
+    - { role: directories, tags: [directories]}
+    - { role: sublime-text, tags: [sublime-text]}
+    - { role: vagrant, tags: [vagrant]}
   vars:
     local_dotfiles_ripository: ''
