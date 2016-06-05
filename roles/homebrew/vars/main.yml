@@ -4,6 +4,7 @@
     # e.g.
     # - homebrew/binary
     homebrew_repositories:
+      - homebrew/completions
 
     # Managed Homebrew packages.
     #
@@ -35,3 +36,6 @@
       - tig
       - mackup
       - argon/mas/mas
+      - hub
+      - httpie
+      - vagrant-completion

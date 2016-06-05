@@ -46,3 +46,7 @@
       - franz
       - caffeine
       - chromium
+      - flash
+      - flash-player
+      - google-chrome-canary
+      - vivaldi

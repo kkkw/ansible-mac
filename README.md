@@ -99,6 +99,13 @@ mas search XXX
 -  Office
 -  Synergy
 
+## 手動でやること
+
++  sublime text のtabをoffに
++  iterm
+  -  カラースキーマを変更
+  -  HotKey Windowを設定
+
 ## 今後のtodo
 
 +  `mas-cli` での削除(state=absent) 的なこと
