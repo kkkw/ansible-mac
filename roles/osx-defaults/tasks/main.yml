@@ -1,0 +1,165 @@
+---
+- name: dock autohide set enable
+  osx_defaults:
+    domain: com.apple.dock
+    key: "{{ item }}"
+    type: bool
+    value: true
+  with_items:
+    - autohide
+    - magnification
+
+- name: finder set enable
+  osx_defaults:
+    domain: com.apple.finder
+    key: "{{ item }}"
+    type: bool
+    value: true
+  with_items:
+    - ShowStatusBar
+    - ShowPathbar
+    - ShowTabView
+    - AppleShowAllFiles
+    - _FXShowPosixPathInTitle
+    - QLEnableTextSelection
+    - DisableAllAnimations
+
+- name: finder set disable
+  osx_defaults:
+    domain: com.apple.finder
+    key: "{{ item }}"
+    type: bool
+    value: false
+  with_items:
+    - NSAutomaticWindowAnimationsEnabled
+    - FXEnableExtensionChangeWarning
+
+- name: finder set default view as column
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXPreferredViewStyle
+    type: string
+    value: Nlsv
+
+- name: show all extentions 
+  osx_defaults:
+    key: AppleShowAllExtensions
+    type: bool
+    value: true
+
+- name: set full keyboard access
+  osx_defaults:
+    key: AppleKeyboardUIMode
+    type: int
+    value: 3
+
+- name: set fn key as function
+  osx_defaults:
+    key: com.apple.keyboard.fnState
+    type: bool
+    value: true
+
+- name: panel expand when save
+  osx_defaults:
+    key: NSNavPanelExpandedStateForSaveMode
+    type: bool
+    value: true
+
+- name: panel expand when saves2
+  osx_defaults:
+    key: NSNavPanelExpandedStateForSaveMode2
+    type: bool
+    value: true
+
+- name: set datetime format in menue
+  osx_defaults:
+    domain: com.apple.menuextra.clock
+    key: DateFormat
+    value: M\u6708d\u65e5(EEE)  H:mm
+
+- name: finder new window target
+  osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTarget
+    value: PfHm
+
+- name: finder new window target path
+  osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTargetPath
+    value: file://${HOME}/
+
+- name: require password after screensaver
+  osx_defaults:
+    domain: com.apple.screensaver
+    key: askForPassword
+    type: int
+    value: 1
+
+- name: require password immediately after screensaver
+  osx_defaults:
+    domain: com.apple.screensaver
+    key: askForPasswordDelay
+    type: float
+    value: 0
+
+# - name: enable tap to click. trackpad
+#   osx_defaults:
+#     domain: com.apple.driver.AppleMultitouchTrackpad.trackpad
+#     key: Clicking
+#     type: int
+#     value: 1
+
+- name: enable right click. mouse
+  osx_defaults:
+    domain: "{{ item }}"
+    key: MouseButtonMode
+    value: TwoButton
+  with_items:
+    - com.apple.driver.AppleBluetoothMultitouch.mouse
+    - com.apple.AppleMultitouchMouse
+
+- name: dont write dsstore on network drive
+  osx_defaults:
+    domain: com.apple.desktopservices
+    key: DSDontWriteNetworkStores
+    type: bool
+    value: true
+
+- name: disable crashreporter
+  osx_defaults:
+    domain: com.apple.CrashReporter
+    key: DialogType
+    value: none
+
+- name: change screencapture location
+  osx_defaults:
+    domain: com.apple.screencapture
+    key: location
+    value: ${HOME}/Downloads
+
+- name: disable natural scroll
+  osx_defaults:
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false
+
+# - name: InitialKeyRepeat
+#   osx_defaults:
+#     key: InitialKeyRepeat
+#     value: 13
+#     type: int
+    
+# - name: KeyRepeat
+#   osx_defaults:
+#     key: KeyRepeat
+#     value: 13
+#     type: int
+
+# - name: disable ImageCapture hotplug
+#   osx_defaults:
+#     domain: com.apple.ImageCapture
+#     key: disableHotPlug
+#     type: bool
+#     value: true
+

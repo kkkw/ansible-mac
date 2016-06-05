@@ -9,5 +9,6 @@
     - { role: directories, tags: [directories]}
     - { role: sublime-text, tags: [sublime-text]}
     - { role: vagrant, tags: [vagrant]}
+    - osx-defaults
   vars:
     local_dotfiles_ripository: ''
