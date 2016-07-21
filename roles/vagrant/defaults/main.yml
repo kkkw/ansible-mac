@@ -4,3 +4,4 @@
     - sahara
     - vagrant-vbguest
     - landrush
+    - vagrant-hostmanager
