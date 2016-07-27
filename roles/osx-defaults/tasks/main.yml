@@ -41,7 +41,7 @@
     type: string
     value: Nlsv
 
-- name: show all extentions 
+- name: show all extentions
   osx_defaults:
     key: AppleShowAllExtensions
     type: bool
@@ -149,17 +149,18 @@
 #     key: InitialKeyRepeat
 #     value: 13
 #     type: int
-    
+
 # - name: KeyRepeat
 #   osx_defaults:
 #     key: KeyRepeat
 #     value: 13
 #     type: int
 
-# - name: disable ImageCapture hotplug
-#   osx_defaults:
-#     domain: com.apple.ImageCapture
-#     key: disableHotPlug
-#     type: bool
-#     value: true
+- name: disable ImageCapture hotplug
+  osx_defaults:
+    domain: com.apple.ImageCapture
+    host: currentHost
+    key: disableHotPlug
+    type: bool
+    value: true
 
