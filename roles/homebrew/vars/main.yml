@@ -4,8 +4,11 @@
     # e.g.
     # - homebrew/binary
     homebrew_repositories:
+      - argon/mas
       - homebrew/completions
-
+      - homebrew/core
+      - homebrew/dupes
+      - homebrew/php
     # Managed Homebrew packages.
     #
     # e.g.
@@ -16,26 +19,56 @@
     # state choices: [head, latest, present, absent, linked, unlinked] (default: latest)
     # install_options: string or sequence (default: none)
     homebrew_packages:
-      - readline
+      - autoconf
+      - automake
+      - bash-completion
+      - bison
+      - bzip2
+      - curl
+      - direnv
+      - fish
+      - freetype
+      - gdbm
+      - gettext
+      - git
+      - gmp
+      - httpie
+      - hub
+      - icu4c
+      - jpeg
+      - jq
+      - libevent
+      - libpng
+      - libtool
+      - libxml2
+      - libyaml
+      - mackup
+      - mas
+      - mcrypt
+      - mhash
+      - nodebrew
+      - oniguruma
       - openssl
       - { name: openssl, state: linked, install_options: force }
-      - git
+      - pcre
+      - pcre2
       - peco
+      - php70
+      - phpbrew
+      - pkg-config
       - rbenv
+      - re2c
+      - readline
       - ruby-build
       - the_silver_searcher
+      - tig
+      - tree
+      - unixodbc
+      - vagrant-completion
       - vim
+      - wget
+      - xz
+      - zlib
       - zsh
       - zsh-completions
       - zsh-syntax-highlighting
-      - fish
-      - curl
-      - wget
-      - jq
-      - nodebrew
-      - tig
-      - mackup
-      - argon/mas/mas
-      - hub
-      - httpie
-      - vagrant-completion
