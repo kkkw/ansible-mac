@@ -35,12 +35,14 @@
       - httpie
       - hub
       - icu4c
+      - { name: icu4c, state: linked }
       - jpeg
       - jq
       - libevent
       - libpng
       - libtool
       - libxml2
+      - { name: libxml2, state: linked, install_options: force }
       - libyaml
       - mackup
       - mas
