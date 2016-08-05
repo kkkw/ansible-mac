@@ -114,6 +114,16 @@ mas search XXX
 +  dotfails
   -  これは`mackup`もあるからどうしようか要件等
 
+## memo
+
+osx_defaultsの設定一覧を取得するワンライナー
+
+    echo $(defaults domains) | tr -s ',' '\n' | while read domain; do defaults read $domain; done &> domains.txt
+
+brew listから、ansible用にするためのワンライナー
+
+    brew list | cat | sed -e 's/^/- /g'
+
 ## License
 
 MIT
