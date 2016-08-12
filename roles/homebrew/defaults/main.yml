@@ -71,6 +71,6 @@
       - wget
       - xz
       - zlib
-      - zsh
+      - { name: zsh, install_options: without-etcdir }
       - zsh-completions
       - zsh-syntax-highlighting
