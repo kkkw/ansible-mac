@@ -26,6 +26,7 @@
       - bzip2
       - curl
       - direnv
+      - fasd
       - fish
       - freetype
       - gdbm
