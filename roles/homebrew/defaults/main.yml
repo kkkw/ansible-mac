@@ -31,6 +31,7 @@
       - freetype
       - gdbm
       - gettext
+      - ghq
       - git
       - gmp
       - httpie
