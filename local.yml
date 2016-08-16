@@ -5,6 +5,7 @@
   roles:
     - { role: homebrew, tags: [homebrew]}
     - { role: homebrew-cask, tags: [homebrew-cask]}
+    - { role: ricty, tags: [ricty]}
     - { role: mas, tags: [mas]}
     - { role: directories, tags: [directories]}
     - { role: sublime-text, tags: [sublime-text]}
