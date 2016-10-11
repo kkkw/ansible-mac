@@ -2,9 +2,6 @@
 - name: Tap Homebrew Cask
   homebrew_tap: tap=caskroom/cask state=present
 
-- name: Install/Upgrade Homebrew Cask
-  homebrew: name=brew-cask state=latest
-
 - name: Tap external Homebrew Cask repositories
   homebrew_tap: 
     tap: '{{ item }}'
