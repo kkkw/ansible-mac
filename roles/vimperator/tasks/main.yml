@@ -1,0 +1,27 @@
+---
+- name: is installed
+  stat:
+    path: ~/Library/Application Support/Firefox/
+  register: vimperator_firefox_support_directory
+
+- block:
+
+  - name: vimperator directory
+    stat: 
+      path: "{{ vimperator_my_setting_directory }}"
+    register: vimperator_exists_my_setting_directory
+
+  - block:
+
+      - name: link vimperator settimg local
+        file: 
+          src: "{{ vimperator_my_setting_directory }}/{{ item }}"
+          dest: ~/{{ item }}
+          state: link
+        items:
+          - _vimperatorrc
+          - vimperator
+
+    when: vimperator_exists_my_setting_directory.stat.isdir is defined and vimperator_exists_my_setting_directory.stat.isdir == true
+
+  when: vimperator_firefox_support_directory.stat.isdir is defined and vimperator_firefox_support_directory.stat.isdir == true
