@@ -65,6 +65,7 @@
       - re2c
       - readline
       - ruby-build
+      - source-highlight
       - the_silver_searcher
       - tig
       - tree
