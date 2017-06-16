@@ -19,6 +19,7 @@
     # state choices: [head, latest, present, absent, linked, unlinked] (default: latest)
     # install_options: string or sequence (default: none)
     homebrew_packages:
+      - aacgain
       - ansible-lint
       - autoconf
       - automake
