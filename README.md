@@ -37,7 +37,7 @@ git clone https://github.com/kkkw/ansible-mac.git
 下記ファイルをそれぞれ編集してインストールしたいものを記述してください。
 
 ```
-roles/{homebrew,homebrew-cask,mas}/vars/main.yml
+roles/{homebrew,homebrew-cask,mas}/defaults/main.yml
 ```
 
 masに関してはidだけあれば大丈夫ですが、後々のメンテナンスのため、
@@ -49,13 +49,8 @@ caskに寄せていますが、masに寄せても大丈夫です。
 ### playbookの実行
 
 ```
-HOMEBREW_CASK_OPTS="--appdir=/Applications" ansible-playbook local.yml -vv
+ansible-playbook local.yml -vv
 ```
-
-`HOMEBREW_CASK_OPTS`をつけないと、アプリのインストール場所が
-`/Applications` だったり、 `~/Applications`だったりになります。
-
-[参考](http://mawatari.jp/archives/mac-provisioning-by-homebrew-and-ansible)
 
 途中で何度かパスワードを聞かれるので、完全な自動にはならないです。
 インストールするものの量にもよりますが、そこそこ時間はかかります。
@@ -109,9 +104,8 @@ mas search XXX
 ## 今後のtodo
 
 +  `mas-cli` での削除(state=absent) 的なこと
-+  `HOMEBREW_CASK_OPTS` をどうにかする
 +  macの設定でコマンドラインでできるやつをansible化
-+  dotfails
++  dotfiles
   -  これは`mackup`もあるからどうしようか要件等
 
 ## memo
