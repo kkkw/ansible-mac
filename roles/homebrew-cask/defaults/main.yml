@@ -31,7 +31,6 @@
       - google-chrome
       - google-chrome-canary
       - google-japanese-ime
-      - google-photos-backup
       - iterm2
       - java6
       - karabiner
@@ -47,7 +46,6 @@
       - sourcetree
       - sublime-text
       - the-unarchiver
-      - unetbootin
       - vagrant
       - virtualbox
       - visual-studio-code
