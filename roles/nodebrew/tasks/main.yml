@@ -1,0 +1,8 @@
+---
+# tasks file for nodebrew
+
+- name: makedir for nodebew
+  file:
+    path: ~/.nodebrew/src
+    state: directory
+    recurse: True

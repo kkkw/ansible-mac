@@ -12,5 +12,6 @@
     - { role: vagrant, tags: [vagrant]}
     - { role: osx-defaults, tags: [osx-defaults]}
     - { role: vimperator, tags: [vimperator]}
+    - { role: nodebrew, tags: [nodebrew]}
   vars:
     local_dotfiles_ripository: ''
