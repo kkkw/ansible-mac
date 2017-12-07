@@ -37,6 +37,7 @@
       - ghq
       - git
       - gmp
+      - goenv
       - graphviz
       - httpie
       - hub
