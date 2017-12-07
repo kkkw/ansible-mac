@@ -2,29 +2,17 @@
 - name: tap for ricty
   homebrew_tap: tap=sanemat/font state=present
 
-#brew reinstall --powerline --vim-powerline ricty
+#brew reinstall with-powerline --vim-powerline ricty
 - name: install ricty
   homebrew:
     name: ricty
     state: latest
-    install_options: powerline, vim-powerline
-
-- name: get ricty version
-  shell:  brew info ricty | fgrep stable
-  register: ricty_version_tmp
-  changed_when: False
-  always_run: True
-
-- name: set ricty version
-  set_fact:
-    ricty_version_dict:  "{{ ricty_version_tmp.stdout | from_yaml }}"
-
-- name: format ricty version
-  set_fact:
-    ricty_version:  "{{ ricty_version_dict['sanemat/font/ricty']  | replace('stable', '') | trim }}"
+    install_options: with-powerline,vim-powerline
 
 - name: copy fonts
   copy:
-    src: /usr/local/Cellar/ricty/{{ ricty_version }}/share/fonts/Ricty\*.ttf
+    src: "{{ item }}"
     dest: ~/Library/Fonts/
+  with_fileglob:
+    - /usr/local/opt/ricty/share/fonts/Ricty*.ttf
   notify: run fc-cache
