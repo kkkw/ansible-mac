@@ -1,6 +1,4 @@
 ---
-    mas_items: []
-    #  - { id: zzzzzzzzz, name: BooklogScanForMac }
-    #  - { id: zzzzzzzzz, name: Microsoft Remote Desktop }
-    #  - { id: zzzzzzzzz, name: LINE }
-    #  - { id: zzzzzzzzz, name: Wunderlist }
+    mas_items:
+      - { id: 410628904, name: Wunderlist }
+      - { id: 485812721, name: TweetDeck by Twitter }
