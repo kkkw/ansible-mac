@@ -103,12 +103,12 @@
     type: float
     value: 0
 
-# - name: enable tap to click. trackpad
-#   osx_defaults:
-#     domain: com.apple.driver.AppleMultitouchTrackpad.trackpad
-#     key: Clicking
-#     type: int
-#     value: 1
+- name: enable tap to click. trackpad
+  osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: Clicking
+    type: int
+    value: 1
 
 - name: enable right click. mouse
   osx_defaults:
