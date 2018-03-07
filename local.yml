@@ -11,5 +11,6 @@
     - { role: sublime-text, tags: [sublime-text]}
     - { role: vagrant, tags: [vagrant]}
     - { role: osx-defaults, tags: [osx-defaults]}
+    - { role: iterm2, tags: [iterm2]}
   vars:
     local_dotfiles_ripository: ''

@@ -1,0 +1,5 @@
+---
+- name: import iterm2 setting
+  copy:
+    src: "{{ iterm2_my_setting_file }}"
+    dest: ~/Library/Preferences/com.googlecode.iterm2.plist
