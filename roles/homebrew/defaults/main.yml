@@ -7,7 +7,6 @@
       - argon/mas
       - homebrew/completions
       - homebrew/core
-      - homebrew/dupes
       - homebrew/php
     # Managed Homebrew packages.
     #
