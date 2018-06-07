@@ -5,7 +5,6 @@
     # - homebrew/binary
     homebrew_repositories:
       - argon/mas
-      - homebrew/completions
       - homebrew/core
       - homebrew/php
     # Managed Homebrew packages.
