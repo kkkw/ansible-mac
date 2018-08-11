@@ -1,7 +1,6 @@
 ---
     # Tap external Homebrew Cask repositories.
     homebrew_cask_repositories:
-      - caskroom/versions
 
     # Managed Homebrew Cask packages.
     #
@@ -18,7 +17,7 @@
       - chromium
       - clipy
       - coteditor
-      - dash
+      # - dash
       - datagrip
       - docker
       - dropbox
