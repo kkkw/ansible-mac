@@ -12,5 +12,6 @@
     - { role: vagrant, tags: [vagrant]}
     - { role: osx-defaults, tags: [osx-defaults]}
     - { role: iterm2, tags: [iterm2]}
+    - { role: revealjs, tags: [revealjs]}
   vars:
     local_dotfiles_ripository: ''
