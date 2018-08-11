@@ -1,9 +1,6 @@
 ---
-- name: Tap Homebrew Cask
-  homebrew_tap: tap=caskroom/cask state=present
-
 - name: Tap external Homebrew Cask repositories
-  homebrew_tap: 
+  homebrew_tap:
     tap: '{{ item }}'
     state: present
   with_items: '{{ homebrew_cask_repositories }}'
