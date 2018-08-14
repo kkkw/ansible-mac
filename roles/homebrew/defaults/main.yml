@@ -44,7 +44,6 @@
       - libevent
       - libpng
       - libtool
-      - { name: libxml2, state: linked, install_options: force }
       - libyaml
       - mackup
       - mas
