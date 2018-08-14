@@ -26,6 +26,7 @@
       - bzip2
       - curl
       - direnv
+      - drafter
       - fasd
       - fish
       - freetype
@@ -76,4 +77,3 @@
       - { name: zsh, install_options: without-etcdir }
       - zsh-completions
       - zsh-syntax-highlighting
-      - { name: 'https://raw.github.com/apiaryio/drafter/master/tools/homebrew/drafter.rb', install_options: HEAD}
