@@ -6,7 +6,6 @@
     homebrew_repositories:
       - argon/mas
       - homebrew/core
-      - homebrew/php
     # Managed Homebrew packages.
     #
     # e.g.
