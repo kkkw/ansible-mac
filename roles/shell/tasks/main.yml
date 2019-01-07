@@ -1,0 +1,7 @@
+---
+
+- name: import zprezto setting
+  copy:
+    src: "{{ shell_zshrs_local }}"
+    dest: ~/.zshrc_local
+
