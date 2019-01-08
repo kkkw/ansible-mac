@@ -3,3 +3,8 @@
   file:
     path: ~/workspace
     state: directory
+
+- name: 'Local | create directory config'
+  file:
+    path: ~/.config
+    state: directory
