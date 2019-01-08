@@ -13,5 +13,7 @@
     - { role: osx-defaults, tags: [osx-defaults]}
     - { role: iterm2, tags: [iterm2]}
     - { role: revealjs, tags: [revealjs]}
+    - { role: shell, tags: [shell]}
+    - { role: zprezto, tags: [zprezto]}
   vars:
     local_dotfiles_ripository: ''

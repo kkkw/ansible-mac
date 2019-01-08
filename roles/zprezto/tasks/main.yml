@@ -1,0 +1,15 @@
+---
+
+- name: is installed zprezto
+  stat:
+    path: ~/.zprezto
+  register: zprezto_exists
+
+- block:
+
+  - name: import zprezto setting
+    copy:
+      src: "{{ zprezto_my_setting_file }}"
+      dest: ~/.zprezto/modules/prompt/external/powerline/prompt_powerline_setup
+
+  when: zprezto_exists.stat.exists is defined and zprezto_exists.stat.exists == true
