@@ -4,7 +4,7 @@
   shell: brew list
   register: mas_brew_list
   changed_when: False
-  always_run: True
+  check_mode: no
 
 - block:
 
@@ -12,7 +12,7 @@
       shell: mas list
       register: mas_installed_list
       changed_when: False
-      always_run: True
+      check_mode: no
 
     - name: MAS | install items
       shell: ' mas install {{ item.id }} '

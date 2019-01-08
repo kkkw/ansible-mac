@@ -3,7 +3,7 @@
   shell: brew cask list
   register: vagrant_cask_list
   changed_when: False
-  always_run: True
+  check_mode: no
 
 - block:
 
@@ -15,24 +15,24 @@
     with_items:
       - boxes
       - machines/shared
-      
+
   - name: vagrant init
     shell: vagrant init
     args:
       creates: "{{ vagrant_directory }}/machines/Vagrantfile"
-      chdir:  "{{ vagrant_directory }}/machines" 
-    
+      chdir:  "{{ vagrant_directory }}/machines"
+
   - name: get installed list
     shell: vagrant plugin list
     args:
-      chdir:  "{{ vagrant_directory }}/machines" 
+      chdir:  "{{ vagrant_directory }}/machines"
     register: vagrant_plugin_list
     changed_when: False
-    always_run: True
+    check_mode: no
 
   - name: install vagrant plugins
     shell: "vagrant plugin install {{ item }}"
     when: '"{{ vagrant_plugins }}" is defined and "{{ item }}" not in vagrant_plugin_list.stdout'
     with_items: "{{ vagrant_plugins }}"
-        
+
   when: '"vagrant" in vagrant_cask_list.stdout_lines'
