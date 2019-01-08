@@ -56,7 +56,6 @@
       - pcre
       - pcre2
       - peco
-      - php70
       - pkg-config
       - qcachegrind
       - qt
