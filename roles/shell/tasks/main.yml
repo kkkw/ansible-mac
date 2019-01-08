@@ -3,5 +3,9 @@
 - name: import zprezto setting
   copy:
     src: "{{ shell_zshrs_local }}"
-    dest: ~/.zshrc_local
+    dest: ~/.zshrc.local
 
+- name: import hub setting
+  copy:
+    src: "{{ shell_hub }}"
+    dest: ~/.config/hub

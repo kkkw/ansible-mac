@@ -1,2 +1,3 @@
 ---
-  shell_zshrs_local:  ~/Dropbox/01Program/shell/.zshrc_local
+  shell_zshrs_local:  ~/Dropbox/01Program/shell/zshrc.local
+  shell_hub: ~/Dropbox/01Program/shell/hub
