@@ -74,5 +74,6 @@
       - xz
       - zlib
       - { name: zsh, install_options: without-etcdir }
+      - zsh-autosuggestions
       - zsh-completions
       - zsh-syntax-highlighting
