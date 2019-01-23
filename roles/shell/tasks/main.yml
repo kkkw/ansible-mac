@@ -9,3 +9,9 @@
   copy:
     src: "{{ shell_hub }}"
     dest: ~/.config/hub
+
+- name: import netrc
+  copy:
+    src: "{{ shell_netrc }}"
+    dest: ~/.netrc
+    mode: 0700
