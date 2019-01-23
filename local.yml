@@ -15,5 +15,6 @@
     - { role: revealjs, tags: [revealjs]}
     - { role: shell, tags: [shell]}
     - { role: zprezto, tags: [zprezto]}
+    - { role: phpbrew, tags: [phpbrew]}
   vars:
     local_dotfiles_ripository: ''
