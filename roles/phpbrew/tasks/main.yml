@@ -1,7 +1,0 @@
----
-
-- name: install phpbrew
-  get_url:
-    url: "https://github.com/phpbrew/phpbrew/raw/master/phpbrew"
-    dest: /usr/local/bin/phpbrew
-    mode: 0755
