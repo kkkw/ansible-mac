@@ -1,6 +1,5 @@
 ---
-- name: 'Local | create directory workspace'
-  file:
+- file:
     path: ~/workspace
     state: directory
 
@@ -8,7 +7,6 @@
     path: ~/workspace/go
     state: directory
 
-- name: 'Local | create directory config'
-  file:
+- file:
     path: ~/.config
     state: directory
