@@ -4,6 +4,10 @@
     path: ~/workspace
     state: directory
 
+- file:
+    path: ~/workspace/go
+    state: directory
+
 - name: 'Local | create directory config'
   file:
     path: ~/.config
