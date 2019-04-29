@@ -65,6 +65,7 @@
       - ruby-build
       - source-highlight
       - the_silver_searcher
+      - tfenv
       - tig
       - tree
       - unixodbc
