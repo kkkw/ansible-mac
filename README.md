@@ -6,7 +6,7 @@
 
 +  `brew` と `ansible` をインストール
 +  `roles/{homebrew,homebrew-cask,mas}/vars/main.yml` を編集
-+  `HOMEBREW_CASK_OPTS="--appdir=/Applications" ansible-playbook local.yml -vv` を実行
++  `HOMEBREW_CASK_OPTS="--appdir=/Applications" ansible-playbook localhost.yml -vv` を実行
 
 ## 注意
 
@@ -49,7 +49,7 @@ caskに寄せていますが、masに寄せても大丈夫です。
 ### playbookの実行
 
 ```
-ansible-playbook local.yml -vv
+ansible-playbook localhost.yml -vv
 ```
 
 途中で何度かパスワードを聞かれるので、完全な自動にはならないです。
