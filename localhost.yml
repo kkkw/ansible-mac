@@ -16,5 +16,6 @@
     - { role: shell, tags: [shell]}
     - { role: zprezto, tags: [zprezto]}
     - { role: composer, tags: [composer]}
+    - { role: karabiner, tags: [karabiner]}
   vars:
     local_dotfiles_ripository: ''
