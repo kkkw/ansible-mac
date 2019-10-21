@@ -49,6 +49,7 @@
       - mas
       - mcrypt
       - mhash
+      - mysql-client
       - nodebrew
       - oniguruma
       - { name: openssl, state: linked, install_options: force }
