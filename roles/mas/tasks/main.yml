@@ -15,8 +15,8 @@
       check_mode: no
 
     - name: MAS | install items
-      shell: ' mas install {{ item.id }} '
-      when: '"{{ item.id }}" not in mas_installed_list.stdout'
+      shell: 'mas install {{ item.id }}'
+      when: 'item.id not in mas_installed_list.stdout'
       with_items: '{{ mas_items }}'
 
   when: '"mas" in mas_brew_list.stdout_lines'

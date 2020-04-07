@@ -1,3 +1,8 @@
 ---
     mas_items:
-      - { id: 485812721, name: TweetDeck by Twitter }
+      - { id: '539883307', name: LINE }
+      - { id: '944960179', name: Any.do }
+      - { id: '937984704', name: Amphetamine }
+      - { id: '1289197285', name: MindNode }
+      - { id: '485812721', name: TweetDeck }
+      - { id: '441258766', name: Magnet }
