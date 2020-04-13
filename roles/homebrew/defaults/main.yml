@@ -34,6 +34,7 @@
       - gettext
       - ghq
       - git
+      - git-secrets
       - gmp
       - graphviz
       - httpie
@@ -72,6 +73,7 @@
       - vagrant-completion
       - vim
       - wget
+      - watch
       - xz
       - zlib
       # - { name: zsh, install_options: without-etcdir }

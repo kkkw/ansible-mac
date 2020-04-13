@@ -1,6 +1,8 @@
 ---
 - name: tap for ricty
-  homebrew_tap: tap=sanemat/font state=present
+  homebrew_tap:
+      tap: sanemat/font
+      state: present
 
 #brew reinstall with-powerline --vim-powerline ricty
 - name: install ricty
