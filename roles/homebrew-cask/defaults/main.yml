@@ -11,20 +11,31 @@
     #
     # state choices: [present, absent, installed, uninstalled] (default: present)
     homebrew_cask_packages:
+      - adoptopenjdk8
       - alfred
       - appcleaner
       - atom
       - authy
+      - brave-browser
       - chromium
       - clipy
+      - coteditor
       - datagrip
       - discord
       - docker
       - dropbox
       - evernote
+      - font-meslo-for-powerline
+      - font-meslo-lg
+      - font-meslolg-nerd-font
+      - font-ricty-diminished
+      - gimp
+      - goland
       - google-chrome
       - google-chrome-canary
       - google-japanese-ime
+      - grandperspective
+      - intellij-idea
       - iterm2
       - java6
       - journey
@@ -32,14 +43,14 @@
       - keepassx
       - phpstorm
       - postman
+      - rubymine
       - slack
       - sublime-text
       - the-unarchiver
+      - tor-browser
       - vagrant
       - virtualbox
       - visual-studio-code
       - vivaldi
       - vlc
-      - homebrew/cask-fonts/font-ricty-diminished
-      - grandperspective
       - webstorm
