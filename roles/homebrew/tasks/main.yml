@@ -1,18 +1,121 @@
 ---
-- name: Tap external Homebrew repositories
-  homebrew_tap: tap={{ item }} state=present
-  with_items: '{{ homebrew_repositories }}'
 
-- name: Update Homebrew
-  homebrew: update_homebrew=yes
+- homebrew_tap:
+    tap: "{{ item }}"
+    path: "{{ homebrew_path }}"
+  loop:
+    - argon/mas
+    - homebrew/aliases
+    - homebrew/cask
+    - homebrew/cask-fonts
 
-- name: Install/Upgrade Homebrew packages
-  homebrew: >
-    name='{{ item.name | default(item) }}'
-    state="{{ item.state | default('latest') }}"
-    install_options={{
-      item.install_options | default() | join(',')
-      if item.install_options is not string
-      else item.install_options
-    }}
-  with_items: '{{ homebrew_packages }}'
+- command: /opt/homebrew/bin/brew alias {{ item }}
+  loop:
+    - i='install'
+    - s='search'
+    - abt='info'
+    - about='info'
+
+- homebrew: 
+    update_homebrew: yes
+    path: "{{ homebrew_path }}"
+
+- homebrew: 
+    name: "{{ item }}"
+    path: "{{ homebrew_path }}"
+  loop:
+    - aacgain
+    - asciinema
+    - awscli
+    - bat
+    - ca-certificates
+    - composer
+    - direnv
+    - exa
+    - fasd
+    - fd
+    - ffmpeg
+    - fzf
+    - fontconfig
+    - gh
+    - goenv
+    - imagemagick
+    - jq
+    - jump
+    - mas
+    - navi
+    - peco
+    - nnn
+    - openssh
+    - php
+    - q
+    - qt
+    - rbenv
+    - ricty
+    - rcm
+    - source-highlight
+    - speedtest-cli
+    - textql
+    - tig
+    - tmux
+    - tor
+    - unar
+    - watch
+    - yarn
+    - youtube-dl
+    - zsh-autosuggestions
+    - zsh-completions
+    - zsh-syntax-highlighting
+
+- homebrew_cask: 
+    name: "{{ item }}"
+    path: /opt/homebrew/bin/brew
+  loop:
+    - alfred
+    - appcleaner
+    - authy
+    - biscuit
+    - brave-browser
+    - cheatsheet
+    - clipy
+    - cron
+    - customshortcuts
+    - datagrip
+    - discord
+    - dropbox
+    - duet
+    - evernote
+    - figma
+    - firefox
+    - font-meslo-for-powerline
+    - font-meslo-lg
+    - font-ricty-diminished
+    - gimp
+    - goland
+    - google-chrome
+    - google-cloud-sdk
+    - google-drive
+    - google-japanese-ime
+    - graphiql
+    - hazel
+    - hiddenbar
+    - intellij-idea
+    - iterm2
+    - journey
+    - karabiner-elements
+    - keepassx
+    - manico
+    - notion
+    - phpstorm
+    - postman
+    - raindropio
+    - rectangle
+    - slack
+    - stack-stack
+    - sublime-text
+    - the-unarchiver
+    - tor-browser
+    - vb-cable
+    - visual-studio-code
+    - vlc
+    - webstorm

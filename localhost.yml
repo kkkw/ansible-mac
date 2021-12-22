@@ -4,7 +4,6 @@
   become: no
   roles:
     - { role: homebrew, tags: [homebrew]}
-    - { role: homebrew-cask, tags: [homebrew-cask]}
     - { role: ricty, tags: [ricty]}
     - { role: mas, tags: [mas]}
     - { role: directories, tags: [directories]}
