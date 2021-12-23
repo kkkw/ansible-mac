@@ -1,6 +1,6 @@
 ---
 
-- homebrew_tap:
+- community.general.homebrew_tap:
     tap: "{{ item }}"
     path: "{{ homebrew_path }}"
   loop:
@@ -9,18 +9,18 @@
     - homebrew/cask
     - homebrew/cask-fonts
 
-- command: /opt/homebrew/bin/brew alias {{ item }}
+- command: "{{ homebrew_path }} alias {{ item }}"
   loop:
     - i='install'
     - s='search'
     - abt='info'
     - about='info'
 
-- homebrew: 
+- community.general.homebrew: 
     update_homebrew: yes
     path: "{{ homebrew_path }}"
 
-- homebrew: 
+- community.general.homebrew: 
     name: "{{ item }}"
     path: "{{ homebrew_path }}"
   loop:
@@ -42,7 +42,6 @@
     - imagemagick
     - jq
     - jump
-    - mas
     - navi
     - peco
     - nnn
@@ -51,7 +50,6 @@
     - q
     - qt
     - rbenv
-    - ricty
     - rcm
     - source-highlight
     - speedtest-cli
@@ -67,9 +65,9 @@
     - zsh-completions
     - zsh-syntax-highlighting
 
-- homebrew_cask: 
+- community.general.homebrew_cask: 
     name: "{{ item }}"
-    path: /opt/homebrew/bin/brew
+    path: "{{ homebrew_path }}"
   loop:
     - alfred
     - appcleaner
