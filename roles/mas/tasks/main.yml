@@ -1,22 +1,43 @@
 ---
+- homebrew:
+    name: mas
+    path: "{{ homebrew_path }}"
 
-- name: MAS | is installed
-  shell: brew list
-  register: mas_brew_list
-  changed_when: False
-  check_mode: no
+- command: mas account
+  register: mas_account_result
+  failed_when: mas_account_result.rc > 1
+  check_mode: false
+  changed_when: false
 
-- block:
+- command: 'mas signin "{{ mas_email }}" "{{ mas_password }}"'
+  register: mas_signin_result
+  when:
+    - mas_account_result.rc == 1
+    - mas_email | bool
+    - mas_password | bool
 
-    - name: MAS | get installed list
-      shell: mas list
-      register: mas_installed_list
-      changed_when: False
-      check_mode: no
+- command: mas list
+  register: mas_list
+  check_mode: false
+  changed_when: false
 
-    - name: MAS | install items
-      shell: 'mas install {{ item.id }}'
-      when: 'item.id not in mas_installed_list.stdout'
-      with_items: '{{ mas_items }}'
-
-  when: '"mas" in mas_brew_list.stdout_lines'
+- command: mas install "{{ item.id }}"
+  loop:
+    - { id: "1475897096", name: "Jira" }
+    - { id: "405399194", name: "Kindle" }
+    - { id: "424389933", name: "Final Cut Pro" }
+    - { id: "1480068668", name: "Messenger" }
+    - { id: "1032755628", name: "Duplicate File Finder" }
+    - { id: "1487937127", name: "Craft" }
+    - { id: "639968404", name: "Parcel" }
+    - { id: "1480933944", name: "Vimari" }
+    - { id: "414568915", name: "Key Codes" }
+    - { id: "1415257369", name: "WaterMinder" }
+    - { id: "290986013", name: "デリバリーズ" }
+    - { id: "539883307", name: "LINE" }
+    - { id: "1459748650", name: "CompareMerge2" }
+    - { id: "937984704", name: "Amphetamine" }
+    - { id: "1289197285", name: "MindNode" }
+    - { id: "1176074088", name: "Termius" }
+    - { id: "1530751461", name: "Snippety" }
+  when: (item.id | string) not in mas_list.stdout

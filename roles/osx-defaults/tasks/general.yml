@@ -1,0 +1,16 @@
+---
+# 設定一般
+- community.general.osx_defaults: {domain: .GlobalPreferences,    key: "{{ item.key }}",    type: "{{ item.type }}",    value: "{{ item.value }}"}
+  loop:
+    - { desc: '一般.外観モードを自動に', key: AppleInterfaceStyleSwitchesAutomatically, type: bool, value: true }
+    - { desc: '一般.サイドバーのアイコンサイズ', key: NSTableViewDefaultSizeMode, type: int, value: 1 }
+    - { desc: '一般.スクロールバーの表示:マウスに基いて自動的に表示', key: AppleShowScrollBars, type: string, value: Automatic }
+    - { desc: '一般.スクロールバーをクリック時クリックされた部分へジャンプ', key: AppleScrollerPagingBehavior, type: bool, value: false }
+    - { desc: '一般.書類を閉じるときに変更内容を保存するか確認する', key: NSCloseAlwaysConfirmsChanges, type: bool, value: false }
+    - { desc: '一般.アプリケーションを終了するときにウィンドウを閉じる', key: NSQuitAlwaysKeepsWindows, type: bool, value: true }
+    
+    - { desc: 'Dockとメニューバー.メニューバーを自動的に表示/非表示', key: _HIHideMenuBar, type: bool, value: false }
+    - { desc: 'Dockとメニューバー.ウィンドウのタイトルバークリック時', key: 'AppleActionOnDoubleClick', type: 'string',  value: Maximize }
+  notify:
+    - Restart MenuBar
+    - Restart Dock

@@ -1,7 +1,0 @@
----
-  vagrant_directory:  ~/vagrant
-  vagrant_plugins:
-    - sahara
-    - vagrant-vbguest
-    - landrush
-    - vagrant-hostmanager

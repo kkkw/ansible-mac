@@ -1,0 +1,209 @@
+---
+#docの左側のアプリ
+#defaultsに渡せる形式に変換
+# - content_visibility:プレビューを表示
+#   - 0:全体設定に従う
+#   - 1:しない
+#   - 2:ロックされていない時
+#   - 3:常に
+# - grouping:通知のグループ化
+#   - 0: 自動
+#   - 1: アプリケーション別
+#   - 2: しない
+# - auth
+#   - 0:
+#   - 1:
+#   - 2:
+#   - 3:
+#   - 4:
+#   - 5:
+#   - 6:
+#   - 7:
+- set_fact:
+    ncprefs_apps: "{{ ncprefs_apps|default([])  }} + [ '<dict><key>auth</key><integer>{{item.auth|default(7)}}</integer><key>bundle-id</key><string>{{item.bundleid}}</string><key>content_visibility</key><integer>{{item.content_visibility|default(0)}}</integer><key>flags</key><integer>{{item.flags|default(8396814)}}</integer><key>grouping</key><integer>{{item.grouping|default(0)}}</integer><key>path</key><string>{{item.path}}</string></dict>' ]" # noqa 204
+  loop: 
+    - {
+      bundleid: com.getdropbox.dropbox,
+      flags: 310386710,
+      path: /Applications/Dropbox.app
+    }
+    - {
+      bundleid: com.evernote.Evernote,
+      flags: 41951254,
+      path: /Applications/Evernote.app
+    }
+    - {
+      bundleid: com.runningwithcrayons.Alfred,
+      flags: 41951246,
+      path: /Applications/Alfred 4.app
+    }
+    - {
+      bundleid: com.brave.Browser,
+      flags: 41955340,
+      path: /Applications/Brave Browser.app
+    }
+    - {
+      bundleid: com.jetbrains.datagrip,
+      flags: 41951246,
+      path: /Applications/DataGrip.app
+    }
+    - {
+      bundleid: com.google.Chrome,
+      flags: 41955342,
+      path: /Applications/Google Chrome.app
+    }
+    - {
+      bundleid: com.google.Chrome.framework.AlertNotificationService,
+      flags: 41955406,
+      path: /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/96.0.4664.110/Helpers/Google Chrome Helper (Alerts).app
+    }
+    - {
+      bundleid: com.jetbrains.intellij,
+      flags: 41951246,
+      path: /Applications/IntelliJ IDEA.app
+    }
+    - {
+      bundleid: com.jetbrains.PhpStorm,
+      flags: 41951246,
+      path: /Applications/PhpStorm.app
+    }
+    - {
+      bundleid: com.jetbrains.WebStorm,
+      flags: 41951246,
+      path: /Applications/WebStorm.app
+    }
+    - {
+      bundleid: com.googlecode.iterm2,
+      flags: 41951246,
+      path: /Applications/iTerm.app
+    }
+    - {
+      bundleid: net.tunnelblick.tunnelblick,
+      flags: 41951246,
+      path: /Applications/Tunnelblick.app
+    }
+    - {
+      auth: 31, 
+      bundleid: us.zoom.xos,
+      flags: 327163918,
+      path: /Applications/zoom.us.app
+    }
+    - {
+      bundleid: com.tinyspeck.slackmacgap,
+      flags: 41951310,
+      path: /Applications/Slack.app
+    }
+    - {
+      bundleid: com.dropbox.alternatenotificationservice,
+      flags: 41951246,
+      path: /Applications/Dropbox.app
+    }
+    - {
+      bundleid: com.hnc.Discord,
+      flags: 41951246,
+      path: /Applications/Discord.app
+    }
+    - {
+      bundleid: jp.naver.line.mac,
+      flags: 276832270,
+      path: /Applications/LINE.app
+    }
+    - {
+      bundleid: com.ideasoncanvas.mindnode.macos,
+      flags: 310386702,
+      path: /Applications/MindNode.app
+    }
+    - {
+      bundleid: com.fujitsu.pfu.SshResident,
+      flags: 41951246,
+      path: /Applications/ScanSnapHomeMain.app/Contents/Helpers/SshResident.app
+    }
+    - {
+      bundleid: com.fujitsu.pfu.SshSCloudWatch,
+      flags: 41951246,
+      path: /Applications/ScanSnapHomeMain.app/Contents/Helpers/SCloudWatch.app
+    }
+    - {
+      bundleid: com.fujitsu.pfu.SshRegister,
+      flags: 41951246,
+      path: /Applications/ScanSnapHomeMain.app/Contents/Helpers/SshRegister.app
+    }
+    - {
+      bundleid: pl.wojciechkulik.Snippety,
+      flags: 8396814,
+      path: /Applications/Snippety.app
+    }
+    - {
+      auth: 1, 
+      bundleid: com.facebook.archon,
+      flags: 310386702,
+      path: /Applications/Messenger.app
+    }
+    - {
+      bundleid: com.eatbiscult.biscult,
+      flags: 41951246,
+      path: /Applications/Biscuit.app
+    }
+    - {
+      bundleid: com.google.drivefs,
+      flags: 41951246,
+      path: /Applications/Google Drive.app
+    }
+    - {
+      bundleid: com.kairos.duetMac,
+      flags: 41951254,
+      path: /Applications/duet.app
+    }
+    - {
+      bundleid: com.todoist.mac.Todoist,
+      flags: 310386766,
+      path: /Applications/Todoist.app
+    }
+    - {
+      bundleid: com.noodlesoft.hazelnotifyd,
+      flags: 41951246,
+      path: /Applications/Hazel.app
+    }
+    - {
+      auth: 6, 
+      bundleid: com.nektony.Duplicates-Finder,
+      flags: 310386702,
+      path: /Applications/Duplicate File Finder.app
+    }
+    - {
+      bundleid: com.funnmedia.waterminder.mac,
+      flags: 41951246,
+      path: /Applications/WaterMinder.app
+    }
+    - {
+      auth: 39, 
+      bundleid: com.mr-brightside.ParcelOSX,
+      flags: 310386702,
+      path: /Applications/Parcel.app
+    }
+    - {
+      bundleid: com.readdle.ReaddleDocsIPad,
+      flags: 270540814,
+      path: /Applications/Documents.app
+    }
+    - {
+      bundleid: com.brave.Browser.framework.AlertNotificationService,
+      flags: 41955404,
+      path: /Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/96.1.33.106/Helpers/Brave Browser Helper (Alerts).app
+    }
+    - {
+      bundleid: com.junecloud.Deliveries,
+      flags: 8206,
+      path: /Applications/Deliveries.app
+    }
+
+- debug:
+    var: ncprefs_apps
+
+- community.general.osx_defaults: { domain: 'com.apple.ncprefs', key: 'apps', type: array, value: "{{ item }}" }
+  loop:
+    - []
+    - "{{ ncprefs_apps }}"
+  when: ncprefs_apps is defined and ncprefs_apps != []
+  changed_when: no
+  notify: Restart NotificationCenter

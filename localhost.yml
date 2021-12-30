@@ -1,20 +1,29 @@
 - hosts: localhost
   connection: local
-  gather_facts: no
   become: no
+  pre_tasks:
+  # - debug:
+  #     var: ansible_env
+  #   tags:
+  #     - always
+  # - debug: 
+  #     var: ansible_facts
+  #   tags:
+  #     - always
+  - set_fact:
+      ansible_user: "{{  ansible_env.USER  }}"
+      ansible_home: "{{  ansible_env.HOME  }}"
+    tags:
+      - always
   roles:
-    - { role: homebrew, tags: [homebrew]}
-    - { role: ricty, tags: [ricty]}
-    - { role: mas, tags: [mas]}
     - { role: directories, tags: [directories]}
-    - { role: sublime-text, tags: [sublime-text]}
-    - { role: vagrant, tags: [vagrant]}
     - { role: osx-defaults, tags: [osx-defaults]}
-    - { role: iterm2, tags: [iterm2]}
-    - { role: revealjs, tags: [revealjs]}
+    - { role: homebrew, tags: [homebrew]}
+    - { role: mas, tags: [mas]}
+    # - { role: sublime-text, tags: [sublime-text]}
+    # - { role: iterm2, tags: [iterm2]}
     - { role: shell, tags: [shell]}
     - { role: zprezto, tags: [zprezto]}
-    - { role: composer, tags: [composer]}
     - { role: karabiner, tags: [karabiner]}
   vars:
-    local_dotfiles_ripository: ''
+    homebrew_path: /opt/homebrew/bin/brew

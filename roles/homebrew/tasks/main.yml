@@ -1,5 +1,4 @@
 ---
-
 - community.general.homebrew_tap:
     tap: "{{ item }}"
     path: "{{ homebrew_path }}"
@@ -9,12 +8,21 @@
     - homebrew/cask
     - homebrew/cask-fonts
 
+- command: brew alias
+  register: brew_alias_list
+  check_mode: false
+  changed_when: false
+
+- debug:
+    var: brew_alias_list
+
 - command: "{{ homebrew_path }} alias {{ item }}"
   loop:
     - i='install'
     - s='search'
     - abt='info'
     - about='info'
+  when: (item | string) not in brew_alias_list.stdout
 
 - community.general.homebrew: 
     update_homebrew: yes
@@ -28,9 +36,12 @@
     - asciinema
     - awscli
     - bat
-    - ca-certificates
+    - bitwarden-cli
+    - chezmoi
     - composer
     - direnv
+    - delta
+    - duti
     - exa
     - fasd
     - fd
@@ -49,7 +60,6 @@
     - php
     - q
     - qt
-    - rbenv
     - rcm
     - source-highlight
     - speedtest-cli
@@ -68,11 +78,13 @@
 - community.general.homebrew_cask: 
     name: "{{ item }}"
     path: "{{ homebrew_path }}"
+    accept_external_apps: yes
   loop:
     - alfred
     - appcleaner
     - authy
     - biscuit
+    - bitwarden
     - brave-browser
     - cheatsheet
     - clipy
@@ -87,7 +99,6 @@
     - firefox
     - font-meslo-for-powerline
     - font-meslo-lg
-    - font-ricty-diminished
     - gimp
     - goland
     - google-chrome
@@ -101,7 +112,6 @@
     - iterm2
     - journey
     - karabiner-elements
-    - keepassx
     - manico
     - notion
     - phpstorm
@@ -109,7 +119,6 @@
     - raindropio
     - rectangle
     - slack
-    - stack-stack
     - sublime-text
     - the-unarchiver
     - tor-browser

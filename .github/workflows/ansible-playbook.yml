@@ -1,0 +1,73 @@
+name: Run ansible-playbook on macOS
+
+on:
+  push:
+    branches:
+      - 'master'
+  schedule:
+    - cron: '0 18 1 * *' # Run at 6 pm UTC / 10 am PT on 1st every month
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        required: false
+        default: ”false"
+
+jobs:
+  integration:
+    name: Integration Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - macos-10.15
+
+    steps:
+      - name: Check out the codebase
+        uses: actions/checkout@v2
+
+      - name: Uninstall GitHub Actions' built-in browsers
+        run: |
+          sudo rm -rf /Applications/Firefox.app
+          sudo rm -rf /Applications/Google\ Chrome.app
+
+      - name: Update homebrew
+        run: brew update-reset && brew update
+
+      - name: Install ansible
+        run: brew install ansible
+
+      - name: Cache .ansible dir
+        uses: actions/cache@v2
+        with:
+          path: ~/.ansible
+          key: ${{ runner.os }}-${{ hashFiles('**/requirements.yml') }}
+
+      - name: Install ansible-galaxy
+        run: |
+          ansible-galaxy collection install -r requirements.yml
+
+      - name: Check the playbook's syntax
+        run: ansible-playbook -i hosts -vv localhost.yml --syntax-check
+
+      - name: Execute the playbook
+        run: ansible-playbook -i hosts -vv localhost.yml
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+
+      - name: Check if the playbook is satisfied with Idempotence
+        run: |
+          idempotence=$(mktemp)
+          ansible-playbook -i hosts -vv localhost.yml | tee -a ${idempotence}
+          tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+
+      - name: Setup tmate session
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
+        timeout-minutes: 15
+
+      - name: Setup tmate session without timeout
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled }}
+        uses: mxschmitt/action-tmate@v3

@@ -1,0 +1,14 @@
+---
+- community.general.osx_defaults: { domain: "{{ item.domain }}", key: "{{ item.key }}", type: "{{ item.type }}", value: "{{ item.value }}" }
+  loop:
+    - {desc: '副ボタンのクリック.2本指でタップ', domain: .GlobalPreferences, key: ContextMenuGesture, type: int, value: 1}
+    - {desc: '副ボタンのクリック.2本指でタップ', domain: com.apple.AppleMultitouchTrackpad, key: TrackpadRightClick, type: bool, value: true}
+    - {desc: '副ボタンのクリック.2本指でタップ', domain: com.apple.AppleMultitouchTrackpad, key: TrackpadCornerSecondaryClick, type: int, value: 0}
+    - {desc: '副ボタンのクリック.2本指でタップ', domain: com.apple.driver.AppleBluetoothMultitouch.trackpad, key: TrackpadRightClick, type: bool, value: true}
+    - {desc: '副ボタンのクリック.2本指でタップ', domain: com.apple.driver.AppleBluetoothMultitouch.trackpad, key: TrackpadCornerSecondaryClick, type: int, value: 0}
+    - {desc: 'タップでクリック', domain: com.apple.AppleMultitouchTrackpad, key: Clicking, type: int, value: 1}
+    - {desc: 'タップでクリック', domain: com.apple.driver.AppleBluetoothMultitouch.trackpad, key: Clicking, type: int, value: 1}
+    - {desc: 'スクロールの方向', domain: .GlobalPreferences, key: com.apple.swipescrolldirection, type: bool, value: false}
+    - {desc: 'アプリケーションExpose', domain: com.apple.dock, key: showAppExposeGestureEnabled, type: bool, value: true}
+    - {desc: 'アプリケーションExpose', domain: com.apple.AppleMultitouchTrackpad, key: TrackpadThreeFingerVertSwipeGesture, type: int, value: 2}
+    - {desc: 'アプリケーションExpose', domain: com.apple.driver.AppleBluetoothMultitouch.trackpad, key: TrackpadThreeFingerVertSwipeGesture, type: int, value: 2}

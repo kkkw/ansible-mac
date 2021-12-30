@@ -1,0 +1,21 @@
+---
+#Mission Control
+- community.general.osx_defaults: { domain: "{{ item.domain }}", key: "{{ item.key }}", type: bool, value: "{{ item.value }}" }
+  loop:
+    - description: '最新の使用状況に基づいて操作スペースをじどうてきに自動的に並べ替える'
+      domain: 'com.apple.dock'
+      key: mru-spaces
+      value: false
+    - description: 'アプリケーションの切替で、アプリケーションが開いているスペースに移動する'
+      domain: .GlobalPreferences
+      key: AppleSpacesSwitchOnActivate
+      value: true
+    - description: 'ウィンドウをアプリケーションごとにグループ化'
+      domain: 'com.apple.dock'
+      key: expose-group-apps
+      value: true
+    - description: 'ディスプレイごとに個別の操作スペース'
+      domain: 'com.apple.spaces'
+      key: 'spans-displays'
+      value: true
+  notify: Restart Dock

@@ -1,6 +1,0 @@
----
-- name: clone repository
-  git:
-    repo: https://github.com/hakimel/reveal.js.git
-    dest: "{{revealjs_workspace_directory}}/reveal.js"
-    update: no

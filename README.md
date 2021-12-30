@@ -1,123 +1,81 @@
-# Mac provisioning by Homebrew and Ansible
+# Ansible Playbook to provision macOS
 
-[このリポジトリ](https://github.com/mawatari/mac-provisioning) を参考(雛形)にして作りました。
-
-## 使い方を3行で
-
-+  `brew` と `ansible` をインストール
-+  `roles/{homebrew,homebrew-cask,mas}/vars/main.yml` を編集
-+  `HOMEBREW_CASK_OPTS="--appdir=/Applications" ansible-playbook localhost.yml -vv` を実行
-
-## 注意
-
-このリポジトリにあるplaybookを実行すると、`brew`のところで、`mas-cli`が入ります。
-一度、playbookを実行した後で、`mas-cli`を使ってIDなどを探したほうが良いかもしれません。
-もしくは、先に`mas-cli`のインストールをしておくかです。
 
 ## 使い方
 
 ### 準備
 
-`brew` と `ansible` をインストールしてください。
-`brew` を先に入れて、`brew` で`ansible`をインストールすればよいと思います。
-`mas`のタスクを使用する場合は、先にApp Storeにサインインしておくとよいです。
+```console
+# Install command line tools
+$ sudo xcodebuild -license
+$ xcode-select --install
+
+# Install homebrew
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+$ brew update
+
+# Install ansible
+$ brew install ansible
+
+```
+
+### Run all provisioning
+
 
 ### playbookの準備
 
 このリポジトリをcloneするか、zipダウンロードして展開してください。
 場所はどこでもいいです。
 
+```console
+$ git clone git@github.com:kkkw/ansible-mac.git
+$ cd ansible-mac
 ```
-cd ~
-git clone https://github.com/kkkw/ansible-mac.git
-```
-
-###  インストールするリストの編集
-
-下記ファイルをそれぞれ編集してインストールしたいものを記述してください。
-
-```
-roles/{homebrew,homebrew-cask,mas}/defaults/main.yml
-```
-
-masに関してはidだけあれば大丈夫ですが、後々のメンテナンスのため、
-nameも一緒に指定しておいたほうがよいです。
-caskとmas両方でインストールできるもの(Slack, The Unarchiverなど)は、
-caskに寄せていますが、masに寄せても大丈夫です。
-両方に記述するのはおすすめしません。
 
 ### playbookの実行
 
 ```
-ansible-playbook localhost.yml -vv
+# Install ansible collections
+$ ansible-galaxy collection install -r requirements.yml
+$ ansible-playbook -i hosts localhost.yml --extra-vars '{"mas_email":"foo@example.com","mas_password":"foo-bar"}'
 ```
 
+### 注意
 途中で何度かパスワードを聞かれるので、完全な自動にはならないです。
 インストールするものの量にもよりますが、そこそこ時間はかかります。
 `cask`や`mas`でバイナリをダウンロードしてくるのに時間がかかるためです。
 
-## バッケージの探し方
+## 自分用メモ
 
-### brew
+### osx_defaultsの設定一覧を取得するワンライナー
 
-```
-brew search XXX
-```
-
-### cask
-
-```
-brew cask search XXX
+```console
+  echo $(defaults domains) | tr -s ',' '\n' | while read domain; do defaults read $domain; done &> domains.txt
 ```
 
-### mas-cli
+### brewから、ansible用にするためのワンライナー
 
+```console
+$ echo "homebrew_taps:" && brew tap | awk '{print "  - "$1}'
+$ brew list --formula | awk '{print "  - "$1}'
+$ brew list --cask | awk '{print "  - "$1}'
 ```
-mas search XXX
+
+### plistの変換
+
+```console
+$ plutil -convert xml1 foo.plist
+$ plutil -convert binary1 foo.plist
 ```
 
-## fork元からの変更点
+### 手動で入れるもの
 
-+  ansible ver2に対応
-  -  warningが出ているところを潰した
-+  各パッケージのvars(一覧)をroles配下に切り出し
-+  `mas-cli` に対応
-+  テスト系は削除
-+  コールバック系も削除
-
-## 手動で入れるもの
-
-自分用メモ
-
--  プリントマジック
 -  Scansnap
--  Office
--  Synergy
+-  KensingtonWorks
 
-## 手動でやること
+### 手動でやること
 
-+  sublime text のtabをoffに
-+  iterm
+-  sublime text のtabをoffに
+-  iterm
   -  カラースキーマを変更
   -  HotKey Windowを設定
-
-## 今後のtodo
-
-+  `mas-cli` での削除(state=absent) 的なこと
-+  macの設定でコマンドラインでできるやつをansible化
-+  dotfiles
-  -  これは`mackup`もあるからどうしようか要件等
-
-## memo
-
-osx_defaultsの設定一覧を取得するワンライナー
-
-    echo $(defaults domains) | tr -s ',' '\n' | while read domain; do defaults read $domain; done &> domains.txt
-
-brew listから、ansible用にするためのワンライナー
-
-    brew list | cat | sed -e 's/^/- /g'
-
-## License
-
-MIT

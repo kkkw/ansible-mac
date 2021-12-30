@@ -1,0 +1,9 @@
+---
+#Siri
+- community.general.osx_defaults: { domain: "{{ item.domain }}", key: "{{ item.key }}", type: bool, value: "{{ item.value }}" }
+  loop:
+    - {desc: '"Siriに頼む"を有効にする', domain: 'com.apple.assistant.support.plist', key: "Assistant Enabled", value: true}
+    - {desc: 'メニューバーにSiriを表示', domain: 'com.apple.Siri', key: "StatusMenuVisible", value: false}
+    - {desc: '"Hey Siri"を聞き取る', domain: 'com.apple.Siri', key: "VoiceTriggerUserEnabled", value: true}
+  notify:
+    - Restart MenuBar

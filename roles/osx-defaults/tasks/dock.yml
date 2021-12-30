@@ -1,0 +1,64 @@
+---
+#docの左側のアプリ
+#defaultsに渡せる形式に変換
+- set_fact:
+    persistent_apps: "{{ persistent_apps|default([])  }} + [ '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{{ item }}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' ]" # noqa 204
+  loop: 
+    - /System/Applications/System Preferences.app
+    - /System/Applications/Launchpad.app
+    - /Applications/Brave Browser.app
+    - /Applications/Slack.app
+    - /Applications/Todoist.app
+    - /Applications/Visual Studio Code.app
+    - /Applications/iTerm.app
+    - /Applications/Biscuit.app
+    - /Applications/Bitwarden.app
+    # - /Applications/Google Chrome.app
+    # - /Applications/Evernote.app
+    # - /Applications/Sublime Text.app
+    - /System/Library/CoreServices/Applications/Archive Utility.app
+
+#docに突っ込む
+- community.general.osx_defaults: { domain: 'com.apple.dock', key: 'persistent-apps', type: array, value: "{{ item }}" }
+  loop:
+    - [] #一旦dockを空にするために空の配列を入れる
+    - "{{ persistent_apps }}"
+  when: persistent_apps is defined and persistent_apps != []
+  changed_when: no
+  notify: Restart Dock
+
+#docの右側のディレクトリなど
+- set_fact:
+      persistent_others: "{{ persistent_others|default([])  }} + [ '<dict><key>tile-type</key><string>{{ item.type | default('directory') }}-tile</string><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file://{% if item is mapping %}{{ item.path }}{% else %}{{ item }}{% endif %}</string><key>_CFURLStringType</key><integer>15</integer></dict><key>arrangement</key><integer>{{ item.arrange | default(1) }}</integer><key>displayas</key><integer>{{ item.displayas | default(0) }}</integer><key>showas</key><integer>{{ item.showas | default(0) }}</integer></dict></dict>' ]" # noqa 204
+  loop: 
+    - {path: "{{ ansible_home }}/Downloads", arrange: 2, displayas: 1, showas: 0 }
+    - {path: "{{ ansible_home }}/Dropbox", arrange: 2, displayas: 1, showas: 1 }
+
+- community.general.osx_defaults: { domain: 'com.apple.dock', key: 'persistent-others', type: array, value: "{{ item }}" }
+  loop:
+    - []
+    - "{{ persistent_others }}"
+  when: persistent_others is defined and persistent_others != []
+  changed_when: no
+  notify: Restart Dock
+
+- community.general.osx_defaults: { domain: 'com.apple.dock', key: "{{ item.key }}", type: "{{ item.type }}", value: "{{ item.value }}" }
+  loop:
+      - { desc: 'サイズ', key: 'tilesize',                 type: 'float',     value: 64 }
+      - { desc: 'docにフォーカスを当てたときに拡大', key: 'magnification',            type: 'bool',    value: true }
+      - { desc: '最大時のサイズ', key: 'largesize',                type: 'float',   value: 128 }
+
+      - { desc: '自動的に隠す', key: 'autohide',                 type: 'bool',    value: true}
+      - { desc: 'ウィンドウをアプリケーションアイコンにしまう', key: 'minimize-to-application',  type: 'boolean', value: true }
+      - { desc: '画面上の位置', key: 'orientation',              type: 'string',  value: bottom }
+      - { desc: 'ウィンドウをしまうときのエフェクト', key: 'mineffect',                type: 'string',  value: genie }
+      - { desc: 'アプリケーションを起動するときアニメーションするか', key: 'launchanim',               type: 'boolean', value: true }
+      - { desc: 'Dockを表示/非表示するのにかける時間', key: 'autohide-time-modifier',   type: 'int',     value: 0 }
+      - { desc: '起動中のアプリケーションにインジケーターを表示', key: 'show-process-indicators',  type: 'boolean', value: true }
+      - { desc: '非表示のアプリケーションを半透明で表示', key: 'showhidden',               type: 'boolean', value: true }
+      - { desc: '最近使ったアプリケーションをDockに表示', key: 'show-recents', type: 'boolean', value: false }
+      - { desc: 'スタックのアイテムをマウスオーバーしたときにハイライトする', key: 'mouse-over-hilite-stack',  type: 'boolean', value: true }
+      - { key: 'mod-count',                type: 'int',     value: '1'}
+      - { key: 'version',                  type: 'int',     value: '1'}
+      # set `version` and `mod-count` to '1' to prevent DockFixUp to be replace the whole Dock in case of a new user
+  notify: Restart Dock

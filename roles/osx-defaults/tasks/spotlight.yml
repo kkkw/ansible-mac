@@ -1,0 +1,9 @@
+---
+#Spotlight
+#メニューバーにSpotlightを表示/非表示
+- community.general.osx_defaults:
+    domain: "{{ansible_home}}/Library/Preferences/ByHost/com.apple.Spotlight"
+    key: "MenuItemHidden"
+    value: true
+  notify:
+    - Restart MenuBar

@@ -1,12 +1,5 @@
 ---
-- file:
-    path: ~/workspace
-    state: directory
-
-- file:
-    path: ~/workspace/go
-    state: directory
-
-- file:
-    path: ~/.config
-    state: directory
+- file: { path: "{{ item }}", state: directory, recurse: yes }
+  loop:
+    - "{{ ansible_home }}/workspace/go"
+    - "{{ ansible_home }}/.config"

@@ -1,0 +1,34 @@
+---
+
+#note タグタブは使わないのでとばす
+#todo サイドバーに表示する項目
+- community.general.osx_defaults: { domain: 'com.apple.finder', key: "{{ item.key }}", type: "{{ item.type }}", value: "{{ item.value  }}" }
+  loop:
+    - { desc: 'finder.環境設定.新規ウィンドウで次を表示', key: 'NewWindowTargetPath', type: string, value: "file://{{ ansible_home }}/" }
+    - { desc: 'フォルダを新規ウィンドウではなくタブで開く', key: 'FinderSpawnTab', type: bool, value: true }
+    - { desc: 'finder.環境設定.デスクトップに表示する項目', key: 'ShowHardDrivesOnDesktop',        type: 'bool',   value: false}
+    - { desc: 'finder.環境設定.デスクトップに表示する項目', key: 'ShowExternalHardDrivesOnDesktop',        type: 'bool',   value: false}
+    - { desc: 'finder.環境設定.デスクトップに表示する項目', key: 'ShowRemovableMediaOnDesktop',        type: 'bool',   value: false}
+    - { key: 'FXPreferredViewStyle', type: 'string', value: 'Nlsv'}
+    - { key: 'ShowTabView',          type: 'bool',   value: true }
+    - { key: 'ShowPathbar',          type: 'bool',   value: true }
+    - { key: 'ShowStatusBar',        type: 'bool',   value: false }
+    - { key: 'ShowSidebar',          type: 'bool',   value: true }
+    - { key: 'FXEnableExtensionChangeWarning', type: 'bool',   value: false}
+    - { key: 'WarnOnEmptyTrash',               type: 'bool',   value: false}
+    - { key: 'FXDefaultSearchScope',           type: 'string', value: 'SCcf'}
+    - { key: 'NewWindowTarget',                type: 'string', value: 'PfHm'}
+    - { key: '_FXShowPosixPathInTitle', type: 'bool', value: true}
+    - { key: 'AppleShowAllFiles',       type: 'bool', value: true}
+    - { key: 'QLEnableTextSelection',   type: 'bool', value: true}
+    - { key: 'DisableAllAnimations',   type: 'bool', value: true}
+  notify: Restart Finder
+
+- community.general.osx_defaults: { domain: '.GlobalPreferences', key: 'AppleShowAllExtensions', type: bool, value: true }
+  notify: Restart Finder
+
+- community.general.osx_defaults: { domain: "com.apple.desktopservices", key: "{{ item.key }}", type: "{{ item.type }}", value: "{{ item.value }}" }
+  loop:
+    - { key: 'DSDontWriteNetworkStores', type: 'bool', value: true}
+    - { key: 'DSDontWriteUSBStores', type: 'bool', value: true}
+  notify: Restart Finder

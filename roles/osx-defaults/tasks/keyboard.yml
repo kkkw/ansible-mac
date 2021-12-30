@@ -1,0 +1,10 @@
+---
+#todo 使用しない状態がN秒経過したらキーボードのバックライトをオフにする
+#todo ショートカット
+#todo 音声入力
+- community.general.osx_defaults: { domain: '.GlobalPreferences', key: "{{ item.key }}", type: "{{ item.type }}", value: "{{ item.value  }}" }
+  loop:
+    - { description: 'キーボード.ショートカット.コントロール間のフォーカス移動をキーボードで操作', key: 'AppleKeyboardUIMode', type: int, value: 3}
+    - { description: 'キーボード.F1,F2などのキーを標準のファンクションキーとして使用', key: 'com.apple.Keyboard.fnState', type: 'bool', value: true}
+    - { description: 'キーボード.キーのリピート', key: 'KeyRepeat', type: 'int', value: 2}
+    - { description: 'キーボード.リピート入力認識までの時間', key: 'InitialKeyRepeat', type: 'int', value: 15}
