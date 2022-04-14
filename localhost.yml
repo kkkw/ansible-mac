@@ -25,5 +25,6 @@
     - { role: shell, tags: [shell]}
     - { role: zprezto, tags: [zprezto]}
     - { role: karabiner, tags: [karabiner]}
+    - { role: sikuli, tags: [sikuli]}
   vars:
     homebrew_path: /opt/homebrew/bin/brew

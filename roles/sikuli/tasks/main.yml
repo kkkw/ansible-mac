@@ -1,0 +1,7 @@
+---
+- file: { path: "{{ item }}", state: directory, recurse: yes }
+  loop:
+    - /Applications/Sikulixide
+- copy:
+    src: "{{ansible_home}}/Dropbox/settings/osx/sikulixidemacm1-2.0.6-20220409.135403-15.jar"
+    dest: /Applications/Sikulixide
