@@ -58,7 +58,6 @@
     - nnn
     - openssh
     - php
-    - q
     - rcm
     - source-highlight
     - speedtest-cli
@@ -66,6 +65,7 @@
     - tig
     - tmux
     - tor
+    - scrcpy
     - unar
     - watch
     - yarn
@@ -80,19 +80,18 @@
     accept_external_apps: yes
   loop:
     - alfred
+    - android-platform-tools
     - appcleaner
     - authy
     - biscuit
     - bitwarden
     - brave-browser
     - cheatsheet
-    - clipy
     - cron
     - customshortcuts
     - datagrip
     - discord
     - dropbox
-    - duet
     - evernote
     - figma
     - firefox
@@ -103,7 +102,6 @@
     - google-chrome
     - google-cloud-sdk
     - google-drive
-    - google-japanese-ime
     - graphiql
     - hazel
     - hiddenbar
