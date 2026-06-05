@@ -2,8 +2,8 @@
 
 - { import_tasks: general.yml, tags: "osx-defaults-general" }
 - { import_tasks: dock.yml, tags: "osx-defaults-dock" }
-- { import_tasks: mission-control.yml, tags: "osx-defaults-mission-control" }
-- { import_tasks: siri.yml, tags: "osx-defaults-siri" }
+# - { import_tasks: mission-control.yml, tags: "osx-defaults-mission-control" }
+# - { import_tasks: siri.yml, tags: "osx-defaults-siri" }
 # todo
 # - { import_tasks: notification-center.yml, tags: "osx-defaults-notification-center" }
 - { import_tasks: keyboard.yml, tags: "osx-defaults-keyboard" }

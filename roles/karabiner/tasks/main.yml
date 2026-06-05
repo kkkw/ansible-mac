@@ -1,5 +1,9 @@
 ---
+- file:
+    path: ~/.config/karabiner/assets/complex_modifications
+    state: directory
+    recurse: yes
 
 - copy:
-    src: kana-cheatsheet.json
+    src: japanese.json
     dest: ~/.config/karabiner/assets/complex_modifications

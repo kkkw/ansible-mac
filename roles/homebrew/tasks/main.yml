@@ -5,8 +5,6 @@
   loop:
     - argon/mas
     - homebrew/aliases
-    - homebrew/cask
-    - homebrew/cask-fonts
 
 - command: brew alias
   register: brew_alias_list
@@ -32,44 +30,41 @@
     name: "{{ item }}"
     path: "{{ homebrew_path }}"
   loop:
-    - aacgain
-    - asciinema
-    - awscli
+    # - awscli
     - bat
     - bitwarden-cli
     - chezmoi
-    - composer
-    - direnv
-    - delta
-    - duti
-    - exa
-    - fasd
-    - fd
-    - ffmpeg
-    - fzf
-    - fontconfig
-    - gh
-    - goenv
-    - imagemagick
-    - jq
+    # - composer
+    # - direnv
+    # - delta
+    # - duti
+    # - fasd
+    # - fd
+    # - ffmpeg
+    # - fzf
+    # - fontconfig
+    # - gh
+    # - goenv
+    # - imagemagick
+    # - jq
     - jump
-    - navi
+    # - navi
     - peco
-    - nnn
-    - openssh
-    - php
-    - rcm
-    - source-highlight
-    - speedtest-cli
-    - textql
-    - tig
+    # - nnn
+    # - openssh
+    # - php
+    # - rcm
+    # - source-highlight
+    # - speedtest-cli
+    # - textql
+    # - tig
     - tmux
-    - tor
-    - scrcpy
-    - unar
-    - watch
-    - yarn
-    - youtube-dl
+    # - tor
+    # - scrcpy
+    # - unar
+    # - watch
+    # - yarn
+    # - youtube-dl
     - zsh-autosuggestions
     - zsh-completions
     - zsh-syntax-highlighting
@@ -79,47 +74,48 @@
     path: "{{ homebrew_path }}"
     accept_external_apps: yes
   loop:
-    - alfred
-    - android-platform-tools
+    # - alfred
+    # - android-platform-tools
     - appcleaner
-    - authy
-    - biscuit
+    # - biscuit
     - bitwarden
     - brave-browser
-    - cheatsheet
-    - cron
-    - customshortcuts
-    - datagrip
-    - discord
-    - dropbox
-    - evernote
-    - figma
-    - firefox
+    # - cheatsheet
+    # - cron
+    # - customshortcuts
+    # - datagrip
+    # - discord
+    # - dropbox
+    # - evernote
+    # - figma
+    # - firefox
     - font-meslo-for-powerline
     - font-meslo-lg
-    - gimp
-    - goland
-    - google-chrome
-    - google-cloud-sdk
-    - google-drive
-    - graphiql
+    # - gimp
+    # - goland
+    # - google-chrome
+    # - google-cloud-sdk
+    # - google-drive
+    # - graphiql
     - hazel
     - hiddenbar
-    - intellij-idea
+    # - intellij-idea
     - iterm2
-    - journey
+    # - journey
     - karabiner-elements
-    - manico
+    # - manico
     - notion
-    - phpstorm
-    - postman
-    - raindropio
+    # - phpstorm
+    # - postman
+    # - raindropio
     - rectangle
     - slack
     - sublime-text
     - the-unarchiver
-    - tor-browser
-    - vb-cable
+    # - tor-browser
+    # - vb-cable
     - visual-studio-code
     - vlc
-    - webstorm
+    - raycast
+    # - webstorm
+    - zoom
